@@ -5,8 +5,7 @@ Authors@R:
     person("Agne", "Velthut-Meikas", ,  "agne.velthut@taltech.ee", role = c("aut", "cre"))
 Description: Provides functions for learning about your R libraries, and the
     packages you have installed.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 8.0.0
