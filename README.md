@@ -8,7 +8,9 @@
 [![R-CMD-check](https://github.com/agneke/libminer/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/agneke/libminer/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of libminer is to …
+libminer helps you understand the R package libraries installed on your
+machine: how many packages you have, how much space they take up, and
+when you installed them.
 
 ## Installation
 
@@ -22,33 +24,48 @@ pak::pak("agneke/libminer")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+`lib_summary()` counts (and optionally sizes) the packages in each of
+your library paths:
 
 ``` r
 library(libminer)
-## basic example code
+
+lib_summary()
+#>                                                                Library
+#> 1                                   C:/Program Files/R/R-4.6.0/library
+#> 2                       C:/Users/Admin/AppData/Local/R/win-library/4.6
+#> 3 C:/Users/Admin/AppData/Local/Temp/RtmpWegzUx/temp_libpath7d787d21c88
+#>   n_packages
+#> 1         30
+#> 2        298
+#> 3          1
+lib_summary(sizes = TRUE)
+#>                                                                Library
+#> 1                                   C:/Program Files/R/R-4.6.0/library
+#> 2                       C:/Users/Admin/AppData/Local/R/win-library/4.6
+#> 3 C:/Users/Admin/AppData/Local/Temp/RtmpWegzUx/temp_libpath7d787d21c88
+#>   n_packages lib_size
+#> 1         30   75.65M
+#> 2        298  741.42M
+#> 3          1   36.54K
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+`lib_starburst()` turns that summary into a colorful starburst plot,
+with one wedge per library:
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+lib_starburst()
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
+<img src="man/figures/README-starburst-1.png" alt="" width="100%" />
 
-You can also embed plots, for example:
+`lib_timeline()` shows *when* you installed each package, using the
+modification time of each package’s `DESCRIPTION` file as its install
+date — handy for spotting bursts of installation activity (a new course,
+a new project) versus quiet stretches:
 
-<img src="man/figures/README-pressure-1.png" alt="" width="100%" />
+``` r
+lib_timeline()
+```
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+<img src="man/figures/README-timeline-1.png" alt="" width="100%" />
