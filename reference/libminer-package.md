@@ -9,6 +9,8 @@ Useful links:
 
 - <https://github.com/agneke/libminer>
 
+- <https://agneke.github.io/libminer/>
+
 - Report bugs at <https://github.com/agneke/libminer/issues>
 
 ## Author

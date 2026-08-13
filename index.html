@@ -50,7 +50,7 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>The goal of libminer is to …</p>
+<p>libminer helps you understand the R package libraries installed on your machine: how many packages you have, how much space they take up, and when you installed them.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -62,24 +62,36 @@
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
+<p><code><a href="reference/lib_summary.html">lib_summary()</a></code> counts (and optionally sizes) the packages in each of your library paths:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/agneke/libminer" class="external-link">libminer</a></span><span class="op">)</span></span>
-<span><span class="co">## basic example code</span></span></code></pre></div>
-<p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
+<span></span>
+<span><span class="fu"><a href="reference/lib_summary.html">lib_summary</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                                                                Library</span></span>
+<span><span class="co">#&gt; 1                                   C:/Program Files/R/R-4.6.0/library</span></span>
+<span><span class="co">#&gt; 2                       C:/Users/Admin/AppData/Local/R/win-library/4.6</span></span>
+<span><span class="co">#&gt; 3 C:/Users/Admin/AppData/Local/Temp/RtmpWegzUx/temp_libpath7d787d21c88</span></span>
+<span><span class="co">#&gt;   n_packages</span></span>
+<span><span class="co">#&gt; 1         30</span></span>
+<span><span class="co">#&gt; 2        298</span></span>
+<span><span class="co">#&gt; 3          1</span></span>
+<span><span class="fu"><a href="reference/lib_summary.html">lib_summary</a></span><span class="op">(</span>sizes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                                                                Library</span></span>
+<span><span class="co">#&gt; 1                                   C:/Program Files/R/R-4.6.0/library</span></span>
+<span><span class="co">#&gt; 2                       C:/Users/Admin/AppData/Local/R/win-library/4.6</span></span>
+<span><span class="co">#&gt; 3 C:/Users/Admin/AppData/Local/Temp/RtmpWegzUx/temp_libpath7d787d21c88</span></span>
+<span><span class="co">#&gt;   n_packages lib_size</span></span>
+<span><span class="co">#&gt; 1         30   75.65M</span></span>
+<span><span class="co">#&gt; 2        298  741.42M</span></span>
+<span><span class="co">#&gt; 3          1   36.54K</span></span></code></pre></div>
+<p><code><a href="reference/lib_starburst.html">lib_starburst()</a></code> turns that summary into a colorful starburst plot, with one wedge per library:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      speed           dist       </span></span>
-<span><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></span>
-<span><span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span></span>
-<span><span class="co">#&gt;  Median :15.0   Median : 36.00  </span></span>
-<span><span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
-<span><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span></code></pre></div>
-<p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date. <code>devtools::build_readme()</code> is handy for this.</p>
-<p>You can also embed plots, for example:</p>
-<p><img src="reference/figures/README-pressure-1.png" alt="" width="100%"></p>
-<p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub and CRAN.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/lib_starburst.html">lib_starburst</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-starburst-1.png" alt="" width="100%"></p>
+<p><code><a href="reference/lib_timeline.html">lib_timeline()</a></code> shows <em>when</em> you installed each package, using the modification time of each package’s <code>DESCRIPTION</code> file as its install date — handy for spotting bursts of installation activity (a new course, a new project) versus quiet stretches:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/lib_timeline.html">lib_timeline</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-timeline-1.png" alt="" width="100%"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
